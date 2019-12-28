@@ -1,16 +1,23 @@
-import $ from 'jquery';
-import "./assets/css/index.css";
-import "./assets/less/index.less";
-import "./assets/scss/index.scss";
-$('li:even').css({background: 'gray'})
-$('li:odd').css({background: 'skyblue'})
+import React from 'react';
+import ReactDom from 'react-dom';
+
+// var sp = React.createElement('span', null, '这是span')
+// var op = React.createElement('p', {title: '你好'}, '这是段落', sp)
+
+// console.log(op)
+// ReactDom.render(op, document.getElementById('app'));
+var s = 1;
+// test
+var op = <div>
+    <p title="hi">
+    {/* { s } */}
+    <label htmlFor="测试label">fds</label>
+    <span>这是span</span>
+</p><span></span>
+    </div>
+
+console.log(op)
+
+ReactDom.render(op, document.getElementById('app'));
 
 
-class Person {
-    constructor() {
-
-    }
-}
-
-
-var p1 = new Person();
