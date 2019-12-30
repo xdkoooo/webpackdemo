@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyHeader from './components/MyHeader';
+import MyHeader from './components/MyHeaderClass';
+
 
 var obj = {
-    name: '小黑',
-    age: 18,
+    name: '阿三',
+    age: 12
 }
-ReactDOM.render(<MyHeader {...obj} school={'上海'}/>, document.getElementById('app'));
+
+ReactDOM.render(<MyHeader {...obj}/>, document.getElementById('app'));
