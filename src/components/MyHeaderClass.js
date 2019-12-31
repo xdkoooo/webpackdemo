@@ -4,12 +4,15 @@ class MyHeader extends React.Component {
     constructor(props) {
         super(props)
         console.log(props);
+        this.state = {
+            msg: '1'
+        }
     }
     render () {
         var { name, age } = this.props;
         return <div>
             {name}
-            <p>这是段落</p>
+            <p>{this.state.msg}</p>
             {age}
         </div>
     }
