@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Commet from './commet/Commet';
+import LifeCircle from './components/LifeCircle';
 
 
-ReactDOM.render(<Commet />, document.getElementById('app'));
+
+ReactDOM.render(<LifeCircle />, document.getElementById('app'));

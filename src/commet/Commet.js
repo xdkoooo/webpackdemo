@@ -19,6 +19,14 @@ class Comment extends Component {
         }
     }
 
+    componentWillMount() {
+
+    }
+
+    componentDidMount() {
+        
+    }
+
     renderList() {
         return this.state.commetList.map(item => (
             <Item key={item.id} {...item}/>
