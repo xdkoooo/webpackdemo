@@ -1,0 +1,16 @@
+.title {
+    height: 30px;
+    line-height: 30px;
+    background-color: skyblue;
+    color: #fff;
+    text-align: center;
+}
+
+/* 全局处理*/
+/* :global(.title) {
+    height: 30px;
+    line-height: 30px;
+    background-color: skyblue;
+    color: #fff;
+    text-align: center;
+} */

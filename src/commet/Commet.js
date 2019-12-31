@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import CommetItem from './CommetItem';
+import Item from './Item';
+import style from './Commet.css';
+
+console.log('style' , style);
 
 
 class Comment extends Component {
@@ -15,16 +18,19 @@ class Comment extends Component {
             ]
         }
     }
+
+    renderList() {
+        return this.state.commetList.map(item => (
+            <Item key={item.id} {...item}/>
+        ))
+    }
+
     render () {
         return (
             <Fragment>
-                <div className="title" >评论组件标题</div>
+                <div className={style.title} >评论组件标题</div>
                 <ul>
-                    {this.state.commetList.map(
-                        item => (
-                            <CommetItem key={item.id} {...item}/>
-                        )
-                    )}
+                    {this.renderList()}
                 </ul>  
             </Fragment>
         )

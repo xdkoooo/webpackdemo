@@ -19,9 +19,43 @@ module.exports = {
     ],
     module: {
         rules: [
-            {test: /\.css$/, use: ['style-loader', 'css-loader'], exclude: [/node_modules/, /dist/]},
-            {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'], exclude: [/node_modules/]},
-            {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'], exclude: [/node_modules/]},
+            {
+                test: /\.css$/, 
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[path][name]__[local]--[hash:5]',
+                            },
+                            sourceMap: true,
+                            
+                        }
+                    }
+                ], 
+                exclude: [/node_modules/, /dist/]
+            },
+            {test: /\.less$/, use: ['style-loader', {
+                loader: 'css-loader',
+                options: {
+                    modules: {
+                        localIdentName: '[path][name]__[local]--[hash:5]',
+                    },
+                    sourceMap: true,
+                    
+                }
+            }, 'less-loader'], exclude: [/node_modules/]},
+            {test: /\.scss$/, use: ['style-loader', {
+                loader: 'css-loader',
+                options: {
+                    modules: {
+                        localIdentName: '[path][name]__[local]--[hash:5]',
+                    },
+                    sourceMap: true,
+                    
+                }
+            }, 'sass-loader'], exclude: [/node_modules/]},
             {
                 test: /\.(png|jpg|jpeg|gif)$/, 
                 use: [
