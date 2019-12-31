@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LifeCircle from './components/LifeCircle';
+import BindBridge from './BindBridge/BindBridge';
 
 
 
-ReactDOM.render(<LifeCircle />, document.getElementById('app'));
+ReactDOM.render(<BindBridge />, document.getElementById('app'));
