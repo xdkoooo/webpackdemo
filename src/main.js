@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BindBridge from './BindBridge/BindBridge';
+import Todos from './Todos/Todos';
 
 
 
-ReactDOM.render(<BindBridge />, document.getElementById('app'));
+ReactDOM.render(<Todos />, document.getElementById('app'));
