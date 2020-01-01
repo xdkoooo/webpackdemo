@@ -6,6 +6,8 @@ class BindBridge extends Component {
         this.state = {
             msg: 12
         }
+
+        this.msgChange = this.msgChange.bind(this);
     }
 
     msgChange(e) {
@@ -24,7 +26,7 @@ class BindBridge extends Component {
 
     render () {
         return <div>
-            <input ref="box" value={this.state.msg} onChange={this.msgChange.bind(this)} type="text" />
+            <input ref="box" value={this.state.msg} onChange={() => this.msgChange('xxx')} type="text" />
             {this.state.msg}
         </div>
     }
