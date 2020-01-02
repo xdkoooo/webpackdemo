@@ -29,7 +29,7 @@ class App extends Component {
             <Route path={'/about'} component={About} />
             <Route path={'/news'} component={NewCenter} exact/>
             <Route path={'/news/:id'} component={News} />
-            <Redirect to={'home'}/>
+            <Redirect to={'/home'}/>
         </Fragment>
     }
 }
