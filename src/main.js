@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import App from './App';
 
 import { DatePicker } from 'antd';
-import 'antd/dist/antd.css';
 
 ReactDOM.render(
-    // <BrowserRouter>
-        
-    // </BrowserRouter>,
-    <DatePicker />,
+    <BrowserRouter>
+        <Route to={'/'} component={App}></Route>
+    </BrowserRouter>,
     document.getElementById('app'));

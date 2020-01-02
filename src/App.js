@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { Link, NavLink, Route, Redirect } from 'react-router-dom';
-import Home from './pages/Home';
-import About from 'lazy!./pages/About';
-import NewCenter from 'lazy!./pages/NewsCenter';
-import News from 'lazy!./pages/News';
-import style from './pages/style.css';
+import { Link, Route, Redirect, Switch } from 'react-router-dom';
+import { Layout, Menu, Icon } from 'antd';
+const { SubMenu } = Menu;
+const { Header, Content, Footer, Sider } = Layout;
+import './css/index.css';
+import Movie from './pages/Movie';
+import Home from './pages/Home-demo';
+import About from './pages/About-demo';
 
 class App extends Component {
     constructor(props) {
@@ -12,25 +14,34 @@ class App extends Component {
     }
     render () {
         const { pathname } = this.props.location;
-        return <Fragment>
-            <Link to={'/home'} className={ pathname === '/home' ? style.active : ''}>首页</Link>
-            <Link to={'/about'} className={ pathname === '/about' ? style.active : ''}>关于</Link>
-            <Link to={'/news'} className={ pathname === '/news' ? style.active : ''}>新闻中心</Link>
-            <Link to={'/news/1'} className={ pathname === '/news/1' ? style.active : ''}>新闻1</Link>
-            <Link to={'/news/2'} className={ pathname === '/news/2' ? style.active : ''}>新闻2</Link>
+        return (
+            <Layout>
+                <Header className="header">
+                    <div className="logo"> 
+                    </div>
+                    <Menu
+                        mode="horizontal"
+                        defaultSelectedKeys={['/home']}
+                        selectedKeys={[pathname]}
+                        style={{ lineHeight: '64px' }}
+                    >
+                        <Menu.Item key="/home"><Link to={'/home'}>首页</Link></Menu.Item>
+                        <Menu.Item key="/movie"><Link to={'/movie'}>电影</Link></Menu.Item>
+                        <Menu.Item key="/about"><Link to={'/about'}>关于我们</Link></Menu.Item>
+                    </Menu>
+                </Header>
 
-            {/* <NavLink to={'/home'}>首页</NavLink>
-            <NavLink to={'/about'}>关于</NavLink>
-            <NavLink to={'/news'} exact={true}>新闻中心</NavLink>
-            <NavLink to={'/news/1'} exact={true}>新闻1</NavLink>
-            <NavLink to={'/news/2'} exact={true}>新闻2</NavLink> */}
-
-            <Route path={'/home'} component={Home} />
-            <Route path={'/about'} component={About} />
-            <Route path={'/news'} component={NewCenter} exact/>
-            <Route path={'/news/:id'} component={News} />
-            <Redirect to={'/home'}/>
-        </Fragment>
+                <Content style={{ padding: '0 0' }}>
+                    <Switch>
+                        <Route path={'/home'} component={Home}></Route>               
+                        <Route path={'/movie'} component={Movie}></Route>
+                        <Route path={'/about'} component={About}></Route>
+                        <Redirect to={'/home'}/>
+                    </Switch>                
+                </Content>
+                <Footer style={{ textAlign: 'center' }}>xkk Design ©2019 Created by xkk</Footer>
+            </Layout>
+        )
     }
 }
 export default App
