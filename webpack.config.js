@@ -72,5 +72,11 @@ module.exports = {
             {test: /\.jsx?$/, use: ['babel-loader', 'lazyload-loader'], exclude: [/node_modules/, /dist/]}
         ]
     },
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        port: 8888,
+        open: true,
+        hot: true,
+        historyApiFallback: true 
+    }
 }
