@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { Link, NavLink, Route } from 'react-router-dom';
+import { Link, NavLink, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
-import NewCenter from './pages/NewsCenter';
-import News from './pages/News';
+import About from 'lazy!./pages/About';
+import NewCenter from 'lazy!./pages/NewsCenter';
+import News from 'lazy!./pages/News';
 import style from './pages/style.css';
 
 class App extends Component {
@@ -29,6 +29,7 @@ class App extends Component {
             <Route path={'/about'} component={About} />
             <Route path={'/news'} component={NewCenter} exact/>
             <Route path={'/news/:id'} component={News} />
+            <Redirect to={'home'}/>
         </Fragment>
     }
 }
