@@ -22,19 +22,19 @@ module.exports = {
             {
                 test: /\.css$/, 
                 use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: {
-                                localIdentName: '[path][name]__[local]--[hash:5]',
-                            },
-                            sourceMap: true,
+                    'style-loader', 'css-loader'
+                    // {
+                    //     loader: 'css-loader',
+                    //     options: {
+                    //         modules: {
+                    //             localIdentName: '[path][name]__[local]--[hash:5]',
+                    //         },
+                    //         sourceMap: true,
                             
-                        }
-                    }
+                    //     }
+                    // }
                 ], 
-                exclude: [/node_modules/, /dist/]
+                // exclude: [/node_modules/, /dist/]
             },
             {test: /\.less$/, use: ['style-loader', {
                 loader: 'css-loader',
