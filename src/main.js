@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Todos from './Todos/Todos';
+import GrandPar from './GrandPar/GrandPar';
+import NoNest from './NoNest/NoNest';
 
 
 
-ReactDOM.render(<Todos />, document.getElementById('app'));
+ReactDOM.render(<NoNest />, document.getElementById('app'));
