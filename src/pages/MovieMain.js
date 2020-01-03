@@ -5,9 +5,10 @@ class MovieMain extends Component {
         super(props)
     }
     render () {
+        const { pathname } = this.props.location;
         const { type, page } = this.props.match.params;
         return <div>
-            MovieMain { type } { page }
+            MovieMain { type } { page } { pathname }
         </div>
     }
 }

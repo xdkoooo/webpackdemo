@@ -14,6 +14,9 @@ class App extends Component {
     }
     render () {
         const { pathname } = this.props.location;
+        console.log('patchname:', pathname);
+        var arr = pathname.split('/');
+        console.log('arr:', arr);
         return (
             <Layout>
                 <Header className="header">
@@ -22,7 +25,7 @@ class App extends Component {
                     <Menu
                         mode="horizontal"
                         defaultSelectedKeys={['/home']}
-                        selectedKeys={[pathname]}
+                        selectedKeys={['/' + arr[1]]}
                         style={{ lineHeight: '64px' }}
                     >
                         <Menu.Item key="/home"><Link to={'/home'}>首页</Link></Menu.Item>
