@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Axios from 'axios';
-import { Card, Rate } from 'antd';
+import { Card, Rate, Spin } from 'antd';
 import styles from './MovieMain.less';
 const { Meta } = Card;
 
@@ -9,31 +9,47 @@ class MovieMain extends Component {
         super(props)
 
         this.state = {
-            list: []
+            list: [],
+            // page: 0,
+            count: 10,
+            totalPages: 0,
+            loading: true
         }
     }
-    async componentWillMount() {
-        const { type, page } = this.props.match.params;
-       
 
-        let res = await Axios.get('/api/v2/movie/in_theaters')
+    async getData(props) {
+        this.setState(() => {
+            return {
+                loading: true
+            }
+        })
+        const { type, page } = props.match.params;
+        const start = (page - 1) * 10;
+        let { count } = this.state;
+
+        let res = await Axios.get(`/api/v2/movie/${type}?start=${start}&count=${count}`)
         console.log(res.data.subjects);
         this.setState(() => {
             return {
-                list: res.data.subjects
+                list: res.data.subjects,
+                totalPages: Math.ceil(res.data.total/count),
+                loading: false
             }
         })
-
-        // let data = await fetch('/api/v2/movie/in_theaters')
-        // let res = await data.json();
-        // console.log(res.subjects);
     }
 
-    componentDidMount() {}
+    componentWillMount() {
+        this.getData(this.props);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.getData(nextProps);
+    }
 
     renderList () {
         return this.state.list.map(item => (
             <Card
+                key={item.id}
                 hoverable
                 style={{ width: 240 }}
                 cover={<img alt="example" src={item.images.large} />}
@@ -46,8 +62,18 @@ class MovieMain extends Component {
     render () {
         const { pathname } = this.props.location;
         const { type, page } = this.props.match.params;
-        return <div className={styles.list}>    
-             {this.renderList()}
+        const { loading } = this.state;
+        console.log(this.props);
+        return <div style={{ position: "relative", minHeight: 600}}>
+            {
+                loading && <Spin size="large"/>
+            }
+            {
+                !loading && (<div className={styles.list}>            
+                        {this.renderList()}
+                    </div>
+                )
+            }   
         </div>
     }
 }
