@@ -5,11 +5,48 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
 </head>
 <body>
-
+    <img id="loading" src="./assets/images/loading.gif" />
+    <script src="https://cdn.bootcss.com/jquery/1.12.0/jquery.min.js"></script>
     <script>
-        alert('1')
+        // http://www.wolfcode.cn/data/upload/ueditor/20191217/5df8822aa27e6.png
+
+        
+        // var img = new Image()
+        // img.onload = function() {
+        //     console.log(11)
+        //     var oimg = document.createElement('img');
+        //     oimg.src = this.src;
+        //     document.body.appendChild(oimg);
+        //     document.getElementById('loading').style.display = "none";
+        // }
+        // img.onerror = function(error) {
+        //     console.log(error);
+        // }
+        // img.src = 'http://www.wolfcode.cn/data/upload/ueditor/20191217/5df8822aa27e6.png';
+
+        setTimeout(function() {
+            console.log(4);
+        }, 0);
+        
+        var p1 = new Promise(function(resolve, reject) {
+            console.log(1);
+            resolve(3)
+        })
+
+        p1.then(function(data) {
+            console.log('data', data);
+            return 5;
+        }, function(err) {
+            console.log('error' + err)
+        }).then(function(x) {
+            console.log(x)
+        })
+
+        console.log(2)
+
     </script>
 </body>
 </html>
