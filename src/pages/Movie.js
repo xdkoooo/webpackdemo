@@ -29,7 +29,10 @@ class Movie extends Component {
                     </Menu>
                     </Sider>
                     <Content style={{ padding: '0 24px', minHeight: 280 }}>
-                        <Route path={'/movie/:type/:page'} component={MovieMain}></Route>                    
+                        <Switch>
+                            <Route path={'/movie/:type/:page'} component={MovieMain}></Route>
+                            <Redirect to={'/movie/in_theaters/1'} />
+                        </Switch>                                          
                     </Content>
                 </Layout>
         )
