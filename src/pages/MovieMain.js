@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Axios from 'axios';
-import { Card, Rate, Spin } from 'antd';
+import { Card, Rate, Spin, Pagination } from 'antd';
 import styles from './MovieMain.less';
 const { Meta } = Card;
 
@@ -12,7 +12,7 @@ class MovieMain extends Component {
             list: [],
             // page: 0,
             count: 10,
-            totalPages: 0,
+            total: 0,
             loading: true
         }
     }
@@ -32,7 +32,7 @@ class MovieMain extends Component {
         this.setState(() => {
             return {
                 list: res.data.subjects,
-                totalPages: Math.ceil(res.data.total/count),
+                total: res.data.total,
                 loading: false
             }
         })
@@ -59,21 +59,34 @@ class MovieMain extends Component {
         ))
     }
 
+    onChange(pageNumber) {
+        console.log(pageNumber);
+        console.log(this);
+        const { type } = this.props.match.params;
+        this.props.history.push(`/movie/${type}/${pageNumber}`)
+    }
+
     render () {
         const { pathname } = this.props.location;
         const { type, page } = this.props.match.params;
-        const { loading } = this.state;
+        const { loading, total } = this.state;
         console.log(this.props);
         return <div style={{ position: "relative", minHeight: 600}}>
             {
                 loading && <Spin size="large"/>
             }
             {
-                !loading && (<div className={styles.list}>            
+                !loading && (<div className={styles.list}>          
                         {this.renderList()}
                     </div>
                 )
-            }   
+            }
+            {
+                !loading && (
+                    <Pagination showQuickJumper defaultCurrent={page * 1} total={total} onChange={this.onChange.bind(this)}/>
+                )
+            }
+
         </div>
     }
 }
