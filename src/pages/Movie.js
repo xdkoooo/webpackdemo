@@ -11,9 +11,7 @@ class Movie extends Component {
     }
     render () {
         const { pathname } = this.props.location;
-        console.log('movie -patchname:', pathname);
         var arr = pathname.split('/');
-        console.log('arr:', arr); 
         return (
             <Layout style={{ padding: '24px 0', background: '#fff' }}>
                     <Sider width={200} style={{ background: '#fff' }}>

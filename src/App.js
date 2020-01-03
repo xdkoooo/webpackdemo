@@ -14,9 +14,7 @@ class App extends Component {
     }
     render () {
         const { pathname } = this.props.location;
-        console.log('patchname:', pathname);
         var arr = pathname.split('/');
-        console.log('arr:', arr);
         return (
             <Layout>
                 <Header className="header">

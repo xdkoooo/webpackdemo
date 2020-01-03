@@ -77,6 +77,14 @@ module.exports = {
         port: 8888,
         open: true,
         hot: true,
-        historyApiFallback: true 
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'https://douban.uieee.com',
+                pathRewrite: { '^/api': '' },
+                changeOrigin: true,
+                secure: true,
+            }
+        }
     }
 }
