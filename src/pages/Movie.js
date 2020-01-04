@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 import MovieMain from './MovieMain';
+import MovieDetail from './MovieDetail';
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
 
@@ -28,7 +29,8 @@ class Movie extends Component {
                     </Sider>
                     <Content style={{ padding: '0 24px', minHeight: 280 }}>
                         <Switch>
-                            <Route path={'/movie/:type/:page'} component={MovieMain}></Route>
+                            <Route path={'/movie/detail/:id'} component={MovieDetail} exact></Route>
+                            <Route path={'/movie/:type/:page'} component={MovieMain} exact></Route>                            
                             <Redirect to={'/movie/in_theaters/1'} />
                         </Switch>                                          
                     </Content>

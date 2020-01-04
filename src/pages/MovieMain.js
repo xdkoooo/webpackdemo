@@ -53,6 +53,7 @@ class MovieMain extends Component {
                 hoverable
                 style={{ width: 240 }}
                 cover={<img alt="example" src={item.images.large} />}
+                onClick={this.jumpUrl.bind(this, item.id)}
             >
                 <Meta title={<Rate allowHalf disabled defaultValue={item.rating.average/2} />} description={item.title} />
             </Card>
@@ -64,6 +65,10 @@ class MovieMain extends Component {
         console.log(this);
         const { type } = this.props.match.params;
         this.props.history.push(`/movie/${type}/${pageNumber}`)
+    }
+
+    jumpUrl(id) {
+        this.props.history.push(`/movie/detail/${id}`)
     }
 
     render () {
